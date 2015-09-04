@@ -44,7 +44,7 @@ public class WeekView extends RelativeLayout implements OnClickListener {
 	}
 
 	public void refreshData(Room room) {
-		calendarFrame = (ScrollView)findViewById(R.id.frameLayout1);
+		calendarFrame = (ScrollView)findViewById(R.id.calendarContainer);
 		calendarFrame.removeAllViews();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 
