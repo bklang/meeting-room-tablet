@@ -13,7 +13,7 @@
     <color name="StatusFreeColor">#529200</color>
     <color name="StatusReservedColor">#b24c4c</color>
     <color name="Transparent">#0000</color>
-    <color name="CalendarMarkerReservedColor">#0066CC</color>
+    <color name="CalendarMarkerReservedColor">#ff00abff</color>
     <color name="CalendarMarkerFreeColor">#0000</color>
 
     <style name="Theme.Transparent" parent="android:Theme">
@@ -43,13 +43,13 @@
     <color name="ReserveBackground">#6698c655</color>
     <color name="ReserveLine">#a4cb80</color>
     <color name="TimeBarTickColor">#3333</color>
-    <color name="ButtonTextNormal">#333</color>
-    <color name="ButtonTextActive">#333</color>
+    <color name="ButtonTextNormal">#eee</color>
+    <color name="ButtonTextActive">#fff</color>
     <color name="ButtonTextDisabled">#999</color>
     <color name="TextInfoColor">#666</color>
     <color name="CalendarWeekTextColor">#999</color>
-    <color name="MenuButtonBackgroundColor">#005C99</color>
-    <color name="MenuButtonPressedColor">#00436E</color>
+    <color name="MenuButtonBackgroundColor">#4ccb00</color>
+    <color name="MenuButtonPressedColor">#03a021</color>
     <color name="MenuButtonInactiveColor">#E3E3E9</color>
 
     <color name="TrafficLightFree">#4ccb00</color>

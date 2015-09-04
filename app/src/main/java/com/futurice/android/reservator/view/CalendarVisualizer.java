@@ -159,7 +159,7 @@ public class CalendarVisualizer extends HorizontalScrollView implements Reservat
 		c.save();
 		c.clipRect(area.left + getScrollX(), area.top,  area.right + getScrollX(), area.bottom);
 		c.translate(area.left, area.top);
-		float textSize = area.height() / 3;
+		float textSize = area.height() / 2;
 		textPaint.setTextSize(textSize);
 		float dayLabelY = area.height() - textSize / 2;
 		float weekLabelY = dayLabelY - textSize;
