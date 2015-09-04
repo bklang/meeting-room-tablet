@@ -1,10 +1,5 @@
 package com.futurice.android.reservator.view;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Canvas.VertexMode;
@@ -27,8 +22,14 @@ import com.futurice.android.reservator.model.DateTime;
 import com.futurice.android.reservator.model.Reservation;
 import com.futurice.android.reservator.model.TimeSpan;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+
 public class CalendarVisualizer extends HorizontalScrollView implements ReservatorVisualizer,
 		OnTouchListener {
+	private static final int CAL_HEIGHT = 1200;
 	private Paint markerPaint, textPaint, weekTextPaint, gridPaint;
 	private int dayStartTime; // minutes from midnight
 	private int dayEndTime;
@@ -59,7 +60,7 @@ public class CalendarVisualizer extends HorizontalScrollView implements Reservat
 		contentFrame = new FrameLayout(getContext());
 		contentFrame.setClickable(true);
 		contentFrame.setOnTouchListener(this);
-		this.addView(contentFrame, LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+		this.addView(contentFrame, LayoutParams.WRAP_CONTENT, CAL_HEIGHT);
 
 
 		this.textColor = getResources().getColor(R.color.CalendarTextColor);
@@ -159,7 +160,7 @@ public class CalendarVisualizer extends HorizontalScrollView implements Reservat
 		c.save();
 		c.clipRect(area.left + getScrollX(), area.top,  area.right + getScrollX(), area.bottom);
 		c.translate(area.left, area.top);
-		float textSize = area.height() / 3;
+		float textSize = area.height() / 5;
 		textPaint.setTextSize(textSize);
 		float dayLabelY = area.height() - textSize / 2;
 		float weekLabelY = dayLabelY - textSize;
@@ -308,8 +309,8 @@ public class CalendarVisualizer extends HorizontalScrollView implements Reservat
 	protected void onDraw(Canvas c) {
 		long start = System.currentTimeMillis();
 		int headerHeight = Math.min(getHeight(), getWidth()) / 12;
-		timeLabelRect = new RectF(0, headerHeight, timeLabelWidth, getHeight());
-		calendarAreaRect = new RectF(timeLabelWidth, headerHeight, getWidth(), getHeight());
+		timeLabelRect = new RectF(0, headerHeight, timeLabelWidth, CAL_HEIGHT);
+		calendarAreaRect = new RectF(timeLabelWidth, headerHeight, getWidth(), CAL_HEIGHT);
 		headerRect = new RectF(timeLabelWidth, 0, getWidth(), headerHeight);
 
 		drawDayHeaders(c, headerRect);

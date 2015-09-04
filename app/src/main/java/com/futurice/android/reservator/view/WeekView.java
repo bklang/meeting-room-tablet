@@ -1,15 +1,11 @@
 package com.futurice.android.reservator.view;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.futurice.android.reservator.R;
 import com.futurice.android.reservator.model.DateTime;
@@ -17,15 +13,21 @@ import com.futurice.android.reservator.model.Reservation;
 import com.futurice.android.reservator.model.Room;
 import com.futurice.android.reservator.model.TimeSpan;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 public class WeekView extends RelativeLayout implements OnClickListener {
 
 	public static final int NUMBER_OF_DAYS_TO_SHOW = 10;
-	public static final int DAY_START_TIME = 60 * 8; // minutes from midnight
-	public static final int DAY_END_TIME = 60 * 20;
+    public static final int DAY_START_TIME = 0; // minutes from midnight
+	// TODO: End time set to 23:59 because of bug when end time is 24:00.
+    public static final int DAY_END_TIME = (60 * 24) - 1;
+
 
 	public static final int NORMALIZATION_START_HOUR = 20;
 
-	private FrameLayout calendarFrame = null;
+	private ScrollView calendarFrame = null;
 	public WeekView(Context context) {
 		this(context, null);
 	}
@@ -42,7 +44,7 @@ public class WeekView extends RelativeLayout implements OnClickListener {
 	}
 
 	public void refreshData(Room room) {
-		calendarFrame = (FrameLayout)findViewById(R.id.frameLayout1);
+		calendarFrame = (ScrollView)findViewById(R.id.frameLayout1);
 		calendarFrame.removeAllViews();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 
@@ -79,7 +81,7 @@ public class WeekView extends RelativeLayout implements OnClickListener {
 
 		CalendarVisualizer cv = new CalendarVisualizer(getContext(), DAY_START_TIME, DAY_END_TIME);
 		cv.setReservations(reservations);
-		calendarFrame.addView(cv, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		calendarFrame.addView(cv);
 		cv.setOnClickListener(this);
 		return;
 	}
