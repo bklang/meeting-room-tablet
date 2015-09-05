@@ -98,7 +98,9 @@ public class RoomActivity extends ReservatorActivity implements OnMenuItemClickL
 				new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						RoomActivity.this.finish();
+						Intent intent = new Intent(RoomActivity.this, LobbyActivity.class);
+						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intent);
 					}
 				});
 
@@ -198,12 +200,12 @@ public class RoomActivity extends ReservatorActivity implements OnMenuItemClickL
 			@Override
 			public void onReservationClick(View v, Reservation reservation) {
 				final EditReservationPopup d = new EditReservationPopup(RoomActivity.this, reservation, currentRoom,
-					new EditReservationPopup.OnReservationCancelledListener() {
-						@Override
-						public void onReservationCancelled(Reservation r) {
-							refreshData();
-						}
-					});
+						new EditReservationPopup.OnReservationCancelledListener() {
+							@Override
+							public void onReservationCancelled(Reservation r) {
+								refreshData();
+							}
+						});
 
 				RoomActivity.this.trafficLights.disable();
 				d.setOnDismissListener(new OnDismissListener() {
@@ -212,7 +214,7 @@ public class RoomActivity extends ReservatorActivity implements OnMenuItemClickL
 						RoomActivity.this.trafficLights.enable();
 					}
 				});
-				
+
 				d.show();
 			}
 		});
@@ -225,6 +227,7 @@ public class RoomActivity extends ReservatorActivity implements OnMenuItemClickL
 	 */
 	public static void startWith(Context context, Room room) {
 		Intent i = new Intent(context, RoomActivity.class);
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		i.putExtra(ROOM_EXTRA, room);
 		context.startActivity(i);
 	}
