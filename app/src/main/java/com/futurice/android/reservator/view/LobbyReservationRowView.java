@@ -5,6 +5,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -82,7 +84,6 @@ public class LobbyReservationRowView extends FrameLayout implements
 		timePicker2 = (CustomTimeSpanPicker2) findViewById(R.id.timeSpanPicker2);
 		roomNameView = (TextView) findViewById(R.id.roomNameLabel);
 		roomInfoView = (TextView) findViewById(R.id.roomInfoLabel);
-		roomStatusView = (TextView) findViewById(R.id.roomStatusLabel);
 		modeSwitcher = (ViewSwitcher) findViewById(R.id.modeSwitcher);
 		switchToNormalModeContent();
 		settings = context.getSharedPreferences(context.getString(R.string.PREFERENCES_NAME), context.MODE_PRIVATE);
@@ -133,16 +134,16 @@ public class LobbyReservationRowView extends FrameLayout implements
 		}
 		timePicker2.setEndTimeRelatively(60); // let book the room for an hour
 
-		roomStatusView.setText(room.getStatusText());
+		Button reserveButton = (Button) bookNowButton;
+		reserveButton.setText(room.getStatusText());
 		if (room.isBookable()) {
-			roomStatusView.setTextColor(getResources().getColor(
-					R.color.StatusFreeColor));
-			bookNowButton.setVisibility(View.VISIBLE);
+			reserveButton.setTextColor(Color.WHITE);
+			reserveButton.setEnabled(true);
 		} else {
-			roomStatusView.setTextColor(getResources().getColor(
-					R.color.StatusReservedColor));
-			bookNowButton.setVisibility(View.INVISIBLE);
+			reserveButton.setTextColor(getResources().getColor(R.color.StatusReservedColor));
+			reserveButton.setEnabled(false);
 		}
+
 	}
 
 	public Room getRoom() {

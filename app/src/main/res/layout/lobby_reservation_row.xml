@@ -9,11 +9,12 @@
 
     <FrameLayout
         android:id="@+id/outerTitleLayout"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
-        android:layout_marginRight="30dp">
+        android:layout_marginRight="30dp"
+        android:layout_weight="20">
 
         <LinearLayout
             android:id="@+id/titleLayout"
@@ -37,13 +38,15 @@
                 android:text="(42 persons)"
                 android:textColor="@color/TextInfoColor" />
         </LinearLayout>
+
     </FrameLayout>
 
     <ViewSwitcher
         android:id="@+id/modeSwitcher"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_weight="80"
         android:inAnimation="@animator/fadein"
         android:outAnimation="@animator/fadeout">
 
@@ -58,27 +61,19 @@
 
             <Button
                 android:id="@+id/bookNowButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="33"
                 android:background="@drawable/button_background"
                 android:focusable="true"
                 android:text="@string/book_now"
                 android:textColor="#fff" />
 
-            <TextView
-                android:id="@+id/roomStatusLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:width="200px"
-                android:text="&lt;status&gt;" />
-
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="66" />
 
             <Button
                 android:id="@+id/calendarButton"
@@ -149,5 +144,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/close_button_states" />
         </LinearLayout>
+
     </ViewSwitcher>
+
 </LinearLayout>
