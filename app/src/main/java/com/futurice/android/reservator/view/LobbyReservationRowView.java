@@ -305,10 +305,8 @@ public class LobbyReservationRowView extends FrameLayout implements
 		// Initial state for the "Reserve" button.
 		if (application.getBooleanSettingsValue("addressBookOption", false)) {
 			reserveButton.setEnabled(false);
-			findViewById(R.id.hintText).setVisibility(View.GONE);
 		} else {
 			reserveButton.setEnabled(true);
-			findViewById(R.id.hintText).setVisibility(View.VISIBLE);
 		}
 
 	}
