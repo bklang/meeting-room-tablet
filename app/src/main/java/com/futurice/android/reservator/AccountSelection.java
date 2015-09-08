@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class AccountSelection extends ReservatorActivity {
 	static final int REQUEST_LOBBY = 0;
+	static final int REQUEST_FAV_ROOM = 1;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class AccountSelection extends ReservatorActivity {
 
 	public void moveToLobby() {
 		Intent i = new Intent(this, LobbyActivity.class);
+		i.setAction(LobbyActivity.ACTION_FAV_ROOM);
 		startActivityForResult(i, REQUEST_LOBBY);
 	}
 

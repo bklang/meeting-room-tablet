@@ -7,17 +7,13 @@ import java.util.Vector;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Html;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
@@ -41,6 +37,9 @@ import com.futurice.android.reservator.view.LobbyReservationRowView.OnReserveLis
 
 public class LobbyActivity extends ReservatorActivity implements OnMenuItemClickListener,
 		DataUpdatedListener, AddressBookUpdatedListener {
+
+	static final String ACTION_FAV_ROOM = "com.futurice.android.reservator.LobbyActivity.action.FAV_ROOM";
+
 	MenuItem settingsMenu, refreshMenu, aboutMenu;
 	LinearLayout container = null;
 	DataProxy proxy;
@@ -63,6 +62,11 @@ public class LobbyActivity extends ReservatorActivity implements OnMenuItemClick
 		ab = this.getResApplication().getAddressBook();
 		DigitalClock clock =  (DigitalClock)findViewById(R.id.digitalClock1);  //FIXME deprecated
         clock.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/EHSMB.TTF"));
+
+		Intent intent = getIntent();
+		if (intent.getAction() != null || intent.equals(ACTION_FAV_ROOM)) {
+			immediatelyGoToFavouriteRoom();
+		}
 	}
 
 	@Override

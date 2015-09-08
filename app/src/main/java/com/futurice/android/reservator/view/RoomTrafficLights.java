@@ -182,6 +182,7 @@ public class RoomTrafficLights extends RelativeLayout {
 	public void enable() {
 		enabled = true;
 		lastTouched = new Date().getTime();
+		RoomTrafficLights.this.setVisibility(VISIBLE);
 		scheduleTimer();
 	}
 

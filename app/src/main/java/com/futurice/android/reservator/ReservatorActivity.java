@@ -1,15 +1,14 @@
 package com.futurice.android.reservator;
 
-import com.futurice.android.reservator.ReservatorApplication;
-import com.futurice.android.reservator.model.ReservatorException;
-import com.futurice.android.reservator.model.Room;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.futurice.android.reservator.model.ReservatorException;
+import com.futurice.android.reservator.model.Room;
 
 public class ReservatorActivity extends Activity {
 
@@ -94,13 +93,19 @@ public class ReservatorActivity extends Activity {
 
 	private void startAutoGoToFavouriteRoom() {
 		if (isPrehensible()){
-			handler.postDelayed(goToFavouriteRoomRunable, 60000);
+			handler.postDelayed(goToFavouriteRoomRunable, 20000);
 		}
 	}
 
 	private void stopAutoGoToFavouriteRoom() {
 		if (isPrehensible()){
 			handler.removeCallbacks(goToFavouriteRoomRunable);
+		}
+	}
+
+	void immediatelyGoToFavouriteRoom() {
+		if (isPrehensible()){
+			handler.postDelayed(goToFavouriteRoomRunable, 0);
 		}
 	}
 
